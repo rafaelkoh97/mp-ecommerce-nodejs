@@ -34,7 +34,7 @@ app.get("/detail", function (req, res) {
     "payer": {
       "name": "Lalo",
       "surname": "Landa",
-      "email": "test_user_58295862@testuser.com",
+      "email": "rafaelkoh97@outlook.com",
       "phone": {
         "area_code": "52",
         "number": 5549737300
