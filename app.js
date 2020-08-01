@@ -11,11 +11,28 @@ const mercadopago = require('mercadopago');
 
 // Agrega credenciales
 mercadopago.configure({
-  access_token: 'TEST-1127153816055797-072919-1eec12cf40538ca2dc180e67b78b3c03-246310383'
+  access_token: 'APP_USR-1159009372558727-072921-8d0b9980c7494985a5abd19fbe921a3d-617633181',
+  integrator_id: 'dev_24c65fb163bf11ea96500242ac130004'
 });
 
 app.get("/", function (req, res) {
   res.render("home");
+});
+
+app.get("/failure", function (req, res) {
+  res.render("failure");
+});
+
+app.get("/success", function (req, res) {
+  res.render("success", req.query);
+});
+
+app.get("/pending", function (req, res) {
+  res.render("pending");
+});
+app.get("/notify", function (req, res) {
+  console.log(req)
+  res.sendStatus(200);
 });
 
 app.get("/detail", function (req, res) {
@@ -34,7 +51,7 @@ app.get("/detail", function (req, res) {
     "payer": {
       "name": "Lalo",
       "surname": "Landa",
-      "email": "rafaelkoh97@outlook.com",
+      "email": "test_user_58295862@testuser.com",
       "phone": {
         "area_code": "52",
         "number": 5549737300
@@ -72,16 +89,12 @@ app.get("/detail", function (req, res) {
     .then(function (response) {
       // console.log(response.body.sandbox_init_point);
       // global.id = response.body.id;
-
       let data = req.query;
-      data.init_point = response.body.sandbox_init_point;
-
+      data.init_point = response.body.init_point;
       res.render("detail", data);
     }).catch(function (error) {
       console.log(error);
     });
-
-
 });
 
 app.use(express.static("assets"));
