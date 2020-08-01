@@ -43,7 +43,7 @@ app.get("/detail", function (req, res) {
         "id": "1234",
         "title": req.query.title,
         "currency_id": "MXN",
-        "picture_url": req.headers.host + "/" + req.query.img,
+        "picture_url": req.headers.host + req.query.img.replace(".", ""),
         "description": "Dispositivo móvil de Tienda e-commerce",
         "quantity": 1,
         "unit_price": parseInt(req.query.price)
@@ -58,7 +58,7 @@ app.get("/detail", function (req, res) {
         "number": 5549737300
       },
       "address": {
-        "street_name": ":Insurgentes Sur",
+        "street_name": "Insurgentes Sur",
         "street_number": 1602,
         "zip_code": "03940"
       }
@@ -85,7 +85,6 @@ app.get("/detail", function (req, res) {
     "notification_url": req.headers.host + "/notify",
     "external_reference": "rafaelkoh97@gmail.com",
   }
-
   mercadopago.preferences.create(preference)
     .then(function (response) {
       // console.log(response.body.sandbox_init_point);
