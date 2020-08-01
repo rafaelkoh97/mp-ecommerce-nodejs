@@ -24,6 +24,7 @@ app.get("/failure", function (req, res) {
 });
 
 app.get("/success", function (req, res) {
+  console.log(req);
   res.render("success", req.query);
 });
 
@@ -31,7 +32,7 @@ app.get("/pending", function (req, res) {
   res.render("pending");
 });
 app.get("/notify", function (req, res) {
-  console.log(req)
+  console.log(req.body);
   res.sendStatus(200);
 });
 
