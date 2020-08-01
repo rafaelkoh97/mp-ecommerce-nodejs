@@ -3,8 +3,12 @@ var exphbs = require("express-handlebars");
 
 var app = express();
 
+app.use(express.json());       // to support JSON-encoded bodies
+app.use(express.urlencoded()); // to support URL-encoded bodies
+
 app.engine("handlebars", exphbs());
 app.set("view engine", "handlebars");
+
 
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
