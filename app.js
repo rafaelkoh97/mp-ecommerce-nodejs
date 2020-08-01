@@ -47,7 +47,7 @@ app.get("/detail", function (req, res) {
         "id": "1234",
         "title": req.query.title,
         "currency_id": "MXN",
-        "picture_url": req.headers.host + req.query.img,
+        "picture_url": "https://" + req.headers.host + req.query.img,
         "description": "Dispositivo móvil de Tienda e-commerce",
         "quantity": 1,
         "unit_price": parseInt(req.query.price)
