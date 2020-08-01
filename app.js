@@ -33,7 +33,7 @@ app.get("/pending", function (req, res) {
 });
 
 app.post("/notify", function (req, res) {
-  console.log(req.body);
+  console.log(req);
   res.sendStatus(200);
 });
 
