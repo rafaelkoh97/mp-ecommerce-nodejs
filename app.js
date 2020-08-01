@@ -28,7 +28,6 @@ app.get("/failure", function (req, res) {
 });
 
 app.get("/success", function (req, res) {
-  console.log(req);
   res.render("success", req.query);
 });
 
@@ -37,7 +36,7 @@ app.get("/pending", function (req, res) {
 });
 
 app.post("/notify", function (req, res) {
-  console.log(req);
+  console.log(req.body);
   res.sendStatus(200);
 });
 
@@ -48,7 +47,7 @@ app.get("/detail", function (req, res) {
         "id": "1234",
         "title": req.query.title,
         "currency_id": "MXN",
-        "picture_url": req.headers.host + req.query.img.replace(".", ""),
+        "picture_url": req.headers.host + req.query.img,
         "description": "Dispositivo móvil de Tienda e-commerce",
         "quantity": 1,
         "unit_price": parseInt(req.query.price)
@@ -90,6 +89,7 @@ app.get("/detail", function (req, res) {
     "notification_url": req.headers.host + "/notify",
     "external_reference": "rafaelkoh97@gmail.com",
   }
+  console.log(preference);
   mercadopago.preferences.create(preference)
     .then(function (response) {
       // console.log(response.body.sandbox_init_point);
